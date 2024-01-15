@@ -120,6 +120,7 @@ Place the documentation files into ./documentation folder. Documentation should 
 '''
 import json
 import os
+import time
 
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
@@ -129,11 +130,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 path = os.getcwd()
-print(path)
 documentation_path = os.path.join(path, "documentation")
-print(documentation_path)
 file_lista = os.listdir(documentation_path)
-print(file_lista)
 
 test_cycles = []
 
@@ -141,7 +139,6 @@ login_details = {}
 
 for current_file in file_lista:
     file_path = os.path.join(documentation_path, current_file)
-    print(file_path)
 
     with open(file_path, "r", encoding="UTF-8") as json_file:
         test_cycles.append(json.loads(json_file.read()))
@@ -266,8 +263,12 @@ for test_cycle in test_cycles:
         EC.element_to_be_clickable((By.XPATH, '//span/div/span[@role="presentation"]/..')))
     project_selection_menu_btn.click()
 
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, f'//li[@data-testid="{board_name}"]'))).click()
+    board_selector = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, f'//li[@data-testid="{board_name}"]')))
+
+    driver.execute_script("arguments[0].scrollIntoView();", board_selector)
+
+    board_selector.click()
 
     WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, '//div[@data-testid="zscale-testcycle-library"]'))).click()
