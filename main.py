@@ -10,7 +10,7 @@ Username, password, URL, Jira board name should be in a login_details.json file 
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "user": {
+    "username": {
       "type": "string"
     },
     "password": {
@@ -24,7 +24,7 @@ Username, password, URL, Jira board name should be in a login_details.json file 
     }
   },
   "required": [
-    "user",
+    "username",
     "password",
     "url",
     "jira_board"
@@ -151,7 +151,7 @@ with open("login_details.json", "r", encoding="UTF-8") as login_details_file:
 
 options = ChromeOptions()
 options.add_experimental_option("detach", True)
-options.add_argument('--headless')
+# options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 driver.set_window_size(1920, 1080)
 
@@ -162,7 +162,7 @@ user_input = driver.find_element(By.ID, 'login-form-username')
 password_input = driver.find_element(By.ID, 'login-form-password')
 login_btn = driver.find_element(By.ID, 'login')
 
-user_input.send_keys(login_details["user"])
+user_input.send_keys(login_details["username"])
 password_input.send_keys(login_details["password"])
 login_btn.click()
 
@@ -344,3 +344,5 @@ for test_cycle in test_cycles:
                 fail_btns[index].click()
             else:
                 blocked_btns[index].click()
+
+driver.quit()
