@@ -151,7 +151,7 @@ with open("login_details.json", "r", encoding="UTF-8") as login_details_file:
 
 options = ChromeOptions()
 options.add_experimental_option("detach", True)
-# options.add_argument('--headless')
+options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 driver.set_window_size(1920, 1080)
 
