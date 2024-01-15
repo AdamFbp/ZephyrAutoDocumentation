@@ -7,10 +7,28 @@ Authors: Adorján Mészáros, Ádám Farkas
 Username, password, URL, Jira board name should be in a login_details.json file in the same directory in the following format:
 
 {
-"user": "username",
-"password": "password",
-"url": "url",
-"jira_board": "Jira board name"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "jira_board": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "user",
+    "password",
+    "url",
+    "jira_board"
+  ]
 }
 
 Place the documentation files into ./documentation folder. Documentation should have the following JSON format:
@@ -133,8 +151,9 @@ with open("login_details.json", "r", encoding="UTF-8") as login_details_file:
 
 options = ChromeOptions()
 options.add_experimental_option("detach", True)
+options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
-driver.maximize_window()
+driver.set_window_size(1920, 1080)
 
 URL = login_details["url"]
 driver.get(URL)

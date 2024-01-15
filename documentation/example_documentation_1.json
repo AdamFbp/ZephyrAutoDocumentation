@@ -1,0 +1,49 @@
+{
+	"name": "Proba tesztciklus",
+	"description": "Az autodoksis cucc tesztelese",
+	"folder": "/Sprint 3/Mészáros Adorján",
+	"testCases": [
+		{
+			"name": "Proba teszteset 1",
+			"objective": "Autodoksi tesztelese 1",
+			"precondition": "Nincs elofeltetel hahaha",
+			"folder": "/Sprint 3/Mészáros Adorján",
+			"priority": "High",
+			"testSteps": [
+				{
+					"testStep": "1.1. tesztlepes",
+					"testData": "1.1. tesztadatok",
+					"expectedResult": "1. elvart eredmenyek",
+					"status": "pass"
+				},
+				{
+					"testStep": "2.2. tesztlepes",
+					"testData": "2.2. tesztadatok",
+					"expectedResult": "2. elvart eredmenyek",
+					"status": "fail"
+				}
+			]
+		},
+		{
+			"name": "Proba teszteset 2",
+			"objective": "Autodoksi tesztelese 2",
+			"precondition": "Nincs elofeltetel itt sem",
+			"folder": "/Sprint 3/Mészáros Adorján",
+			"priority": "Low",
+			"testSteps": [
+				{
+					"testStep": "2.1. tesztlepes",
+					"testData": "2.1. tesztadatok",
+					"expectedResult": "1. elvart eredmenyek",
+					"status": "pass"
+				},
+				{
+					"testStep": "2.2. tesztlepes",
+					"testData": "2.2. tesztadatok",
+					"expectedResult": "2. elvart eredmenyek",
+					"status": "blocked"
+				}
+			]
+		}	
+	]
+}
